@@ -12,6 +12,14 @@ class ListNode:
 
 
 class Solution:
+    """
+    cur -> 1 -> 2 -> 3 -> 4
+    cur -> 2
+    cur -> 2 -> 1
+    cur -> 2 -> 1 -> 3 -> 4
+    2 -> 1 -> 3 -> 4
+             cur
+    """
     def swapPairs(self, head: Optional[ListNode]) -> Optional[ListNode]:
         dummy_head = ListNode(next=head)
         cur = dummy_head
@@ -28,3 +36,17 @@ class Solution:
         return dummy_head.next
 
 
+# 创建一个链表 1 -> 2 -> 3 -> 4
+head = ListNode(1, ListNode(2, ListNode(3, ListNode(4))))
+
+# 创建Solution对象
+solution = Solution()
+
+# 调用swapPairs方法
+new_head = solution.swapPairs(head)
+
+# 打印交换后的链表
+current = new_head
+while current:
+    print(current.val, end=" -> ")
+    current = current.next

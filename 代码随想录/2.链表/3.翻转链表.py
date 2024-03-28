@@ -25,7 +25,13 @@ class Solution:
 
 class Solution2:
     """头插法实现反转链表"""
-
+    """ 
+    X->None 
+    1->2->3->4->None
+    
+    X->1->None
+    2->3->4->None
+    """
     def reverseList(self, head: Optional[ListNode]) -> Optional[ListNode]:
         # 创建虚拟头节点
         dummy = ListNode(next=None)
@@ -39,3 +45,17 @@ class Solution2:
             cur = t
 
         return dummy.next
+
+
+class Solution3:
+    """递归法"""
+
+    def reverseList(self, head: Optional[ListNode]) -> Optional[ListNode]:
+        return self.reverse(head, None)
+
+    def reverse(self, cur: ListNode, pre: Optional[ListNode]) -> Optional[ListNode]:
+        if cur is None:
+            return pre
+        temp = cur.next
+        cur.next = pre
+        return self.reverse(temp, pre)
