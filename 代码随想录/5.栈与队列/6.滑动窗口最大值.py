@@ -34,7 +34,7 @@ class Solution:
     def maxSlidingWindow(self, nums: List[int], k: int) -> List[int]:
         que = MyQueue()
         result = []
-        for i in range(k):  # 先将前 k 个元素放进队列
+        for i in range(k):  # 先将前 k 个元素放进队列（单调队列保证了最左边的元素是最大的，不维护入队比它小的元素）
             que.push(nums[i])
         result.append(que.front())  # result 记录前 k 个元素的最大值
         for i in range(k, len(nums)):
