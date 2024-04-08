@@ -11,8 +11,11 @@ class Solution:
     def topKFrequent(self, nums: List[int], k: int) -> List[int]:
         # 要统计元素出现频率
         map_ = {}  # nums[i]:对应出现的次数 map的 key 是元素，值是频率
-        for i in range(len(nums)):
-            map_[nums[i]] = map_.get(nums[i], 0) + 1
+        # for i in range(len(nums)):
+        #     map_[nums[i]] = map_.get(nums[i], 0) + 1
+
+        for v in nums:
+            map_[v] = map_.get(v, 0) + 1
 
         # 对频率排序
         # 定义一个小顶堆，大小为 k

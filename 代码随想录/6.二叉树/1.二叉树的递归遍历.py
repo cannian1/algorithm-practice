@@ -4,6 +4,7 @@
 
 from typing import List
 
+
 class TreeNode:
     def __init__(self, val, left=None, right=None):
         self.val = val
@@ -13,6 +14,7 @@ class TreeNode:
 
 class Solution:
     """前序遍历（根左右）"""
+
     def preorderTraversal(self, root: TreeNode) -> List[int]:
         if not root:
             return []
@@ -32,12 +34,25 @@ class Solution:
 
         return left + [root.val] + right
 
-    class Solution:
-        def postorderTraversal(self, root: TreeNode) -> List[int]:
-            if not root:
-                return []
+    def postorderTraversal(self, root: TreeNode) -> List[int]:
+        """后序遍历（左右根）"""
+        if not root:
+            return []
 
-            left = self.postorderTraversal(root.left)
-            right = self.postorderTraversal(root.right)
+        left = self.postorderTraversal(root.left)
+        right = self.postorderTraversal(root.right)
 
-            return left + right + [root.val]
+        return left + right + [root.val]
+
+
+# 创建示例二叉树
+root = TreeNode(1)
+root.left = TreeNode(2)
+root.right = TreeNode(3)
+root.left.left = TreeNode(4)
+root.left.right = TreeNode(5)
+
+solution = Solution()
+result = solution.preorderTraversal(root)
+
+print(result)
