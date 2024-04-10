@@ -40,6 +40,9 @@ class Solution2:
         return count
 
 
+"""满二叉树计算节点数量 2的深度次方+1 """
+
+
 class Solution3:
     """利用完全二叉树的性质"""
 
@@ -49,10 +52,11 @@ class Solution3:
         count = 0
         left = root.left
         right = root.right
-        while left and right:
+        while left and right:  # 一直向树的外侧遍历
             count += 1
             left = left.left
             right = right.right
         if not left and not right:  # 同时到底说明这个子树是满二叉树
             return 2 ** count - 1
+        # 有一边缺一个节点就向下递归，子树肯定有满足满二叉树的节点
         return 1 + self.countNodes(root.left) + self.countNodes(root.right)
