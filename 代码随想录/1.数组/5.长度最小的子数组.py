@@ -8,17 +8,15 @@ from typing import List
 # 滑动窗口
 class Solution:
     def minSubArrayLen(self, target: int, nums: List[int]) -> int:
-        l = len(nums)
 
         left = 0
-        right = 0
         min_len = float('inf')
         cur_sum = 0  # 当前的累加值
 
         # 右指针先走
-        while right < l:
+        for right, val in enumerate(nums):
             # 计算当前累加和
-            cur_sum += nums[right]
+            cur_sum += val
 
             # 这个循环执行结束后可以得到当前右指针往左的长度最小的子数组长度
             while cur_sum >= target:  # 当前累加值大于目标值
@@ -63,6 +61,3 @@ if __name__ == "__main__":
 
     # 测试用例5：目标和为0
     print(solution.minSubArrayLen(0, [1, 2, 3, 4, 5]))  # 预期输出: 0
-
-
-

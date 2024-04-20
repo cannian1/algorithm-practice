@@ -1,4 +1,4 @@
-# 42.接雨水
+# 42.接雨水 https://leetcode.cn/problems/trapping-rain-water/
 from typing import List
 
 
