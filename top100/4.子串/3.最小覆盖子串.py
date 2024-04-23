@@ -1,6 +1,4 @@
 # 76. 最小覆盖子串 https://leetcode.cn/problems/minimum-window-substring
-import collections
-
 
 class Solution:
     def minWindow(self, s: str, t: str) -> str:
