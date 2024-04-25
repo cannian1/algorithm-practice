@@ -38,7 +38,7 @@ class Solution:
             # 更新 pre、cur 指针
             pre = cur
             cur = t
-        return t
+        return pre
 
 
 class Solution2:

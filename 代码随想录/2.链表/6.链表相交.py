@@ -55,7 +55,7 @@ class Solution2:
         if dis > 0:
             headA = self.moveForword(headA, dis)
         else:
-            headB = self.moveForword(headB, dis)
+            headB = self.moveForword(headB, -dis)
 
         # 将两个头向前移动，直到它们相交
         while headA and headB:
