@@ -33,7 +33,7 @@ class Solution:
                 cur = temp
 
             nxt = p0.next
-            nxt.next.next = cur
+            p0.next.next = cur
             p0.next = pre
             p0 = nxt
         return dummy.next
