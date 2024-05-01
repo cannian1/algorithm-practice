@@ -1,4 +1,5 @@
-# 二叉树的直径 https://leetcode.cn/problems/diameter-of-binary-tree/solutions/139683/er-cha-shu-de-zhi-jing-by-leetcode-solution/
+# 543.二叉树的直径
+# https://leetcode.cn/problems/diameter-of-binary-tree/
 from typing import Optional
 
 
