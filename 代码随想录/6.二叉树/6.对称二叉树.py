@@ -24,6 +24,8 @@ class Solution:
             return False
         elif left is not None and right is None:
             return False
+        elif left is None and right is None:
+            return True
         # 排除了空节点，再排除数值不相同的情况
         elif left.val != right.val:
             return False
