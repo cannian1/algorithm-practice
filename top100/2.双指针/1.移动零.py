@@ -11,3 +11,9 @@ class Solution:
             if nums[i] != 0:
                 nums[i], nums[k] = nums[k], nums[i]
                 k += 1
+
+
+arr = [1, 2, 0, 0, 4, 0, 5]
+s = Solution()
+s.moveZeroes(arr)
+print(arr)
