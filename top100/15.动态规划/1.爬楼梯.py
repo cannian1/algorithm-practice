@@ -1,6 +1,13 @@
 # 70.爬楼梯
 # https://leetcode.cn/problems/climbing-stairs/
 
+# 一阶：1种
+# 二阶：2种
+# 三阶：3种 (一阶+二阶)
+# 四阶：5种 （三阶+四阶）
+
+# dp[i] 达到i阶有dp[i]种方法
+
 # 空间复杂度为O(n)版本
 class Solution:
     def climbStairs(self, n: int) -> int:
@@ -12,7 +19,7 @@ class Solution:
         dp[2] = 2
 
         for i in range(3, n + 1):
-            dp[i] = dp[i - 1] + dp[i - 2]
+            dp[i] = dp[i - 1] + dp[i - 2]  # 当前阶数有几种方法依赖于前两个阶数的和
 
         return dp[n]
 
