@@ -43,6 +43,7 @@ def insertion_sort(nums: list[int]):
 
 class QuickSort:
     """快速排序 O(nlogn) O(n) 不稳定"""
+
     def partition(self, nums: list[int], left: int, right: int) -> int:
         """哨兵划分"""
         # 以 nums[left] 为基数
@@ -89,5 +90,5 @@ def quicksort(nums: list[int]) -> list[int]:
 
 s = QuickSort()
 arr = [4, 7, 9, 12, 7, 3, 1, 8]
-s.quick_sort(arr,0,len(arr)-1)
+s.quick_sort(arr, 0, len(arr) - 1)
 print(arr)
