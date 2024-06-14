@@ -23,7 +23,7 @@ class Solution:
         second_pos = second_half_start
 
         while result and second_pos:
-            if first_pos.val!=second_pos.val:
+            if first_pos.val != second_pos.val:
                 result = False
             first_pos = first_pos.next
             second_pos = second_pos.next
@@ -32,7 +32,7 @@ class Solution:
         first_half_end.next = self.reverse_list(second_half_start)
         return result
 
-    def end_of_first_half(self, head):
+    def end_of_first_half(self, head) -> ListNode:
         """找到前半部分的尾节点"""
         fast = head
         slow = head
@@ -41,7 +41,7 @@ class Solution:
             slow = slow.next
         return slow
 
-    def reverse_list(self, head):
+    def reverse_list(self, head) -> ListNode:
         """翻转链表"""
         pre = None
         cur = head

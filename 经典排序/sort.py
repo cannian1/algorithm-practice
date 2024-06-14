@@ -5,11 +5,11 @@ def selection_sort(nums: list[int]):
 
     # 每轮选出待排序区间最小值与待排序区间第一个索引处的元素交换
     for i in range(n - 1):
-        min_val = i
+        min_idx = i
         for j in range(i + 1, n):
-            if nums[j] < nums[min_val]:
-                min_val = j
-        nums[i], nums[min_val] = nums[min_val], nums[i]
+            if nums[j] < nums[min_idx]:
+                min_idx = j
+        nums[i], nums[min_idx] = nums[min_idx], nums[i]
 
 
 def bubble_sort(nums: list[int]):
