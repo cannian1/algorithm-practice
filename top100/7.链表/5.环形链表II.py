@@ -16,7 +16,7 @@ class Solution:
         slow = head
         fast = head
 
-        while fast and fast.next:
+        while fast and fast.next:  # 这和找链表前半段的尾结点的条件不一样
             slow = slow.next
             fast = fast.next.next
 
