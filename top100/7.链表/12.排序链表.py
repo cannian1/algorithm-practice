@@ -30,6 +30,8 @@ class Solution:
         """获取链表中间节点"""
         if not head:
             return head
+        # 快指针要先移动一位，不然在偶数个节点时，slow会指向第二个中间节点
+        # 或者把 while 条件改成回文链表的获取前半段尾结点那样 while fast.next and fast.next.next:
         slow, fast = head, head.next
         while fast and fast.next:
             fast = fast.next.next
