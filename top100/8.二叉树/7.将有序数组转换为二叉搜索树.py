@@ -25,6 +25,6 @@ class Solution:
         return ans
 
 
-arr = [-10,-3,0,5,9]
+arr = [-10, -3, 0, 5, 9]
 s = Solution()
 tr = s.sortedArrayToBST(arr)
