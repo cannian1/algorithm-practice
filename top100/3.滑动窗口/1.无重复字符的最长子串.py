@@ -17,3 +17,8 @@ class Solution:
             window.add(c)  # 加入 c
             result = max(result, right - left + 1)  # 更新窗口最大值
         return result
+
+
+s = Solution()
+res = s.lengthOfLongestSubstring("pwwkew")
+print(res)
