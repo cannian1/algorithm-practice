@@ -1,5 +1,6 @@
 # 78.子集
 # https://leetcode.cn/problems/subsets/
+# 子集类回溯
 
 class Solution:
     def subsets(self, nums):
@@ -16,3 +17,64 @@ class Solution:
             path.append(nums[i])
             self.backtracking(nums, i + 1, path, result)
             path.pop()
+
+
+class Solution2:
+    """
+    站在输入的角度思考
+    每个数可以在子集中（选）
+    也可以不在子集中（不选）
+    叶子是答案
+    """
+
+    # https://www.bilibili.com/video/BV1mG4y1A7Gu
+    def subsets(self, nums):
+        ans = []
+        path = []
+        n = len(nums)
+
+        def dfs(i):
+            if i == n:
+                ans.append(path.copy())
+                return
+
+            dfs(i + 1)
+
+            path.append(nums[i])
+            dfs(i + 1)
+            path.pop()  # 恢复现场
+
+        dfs(0)
+        return ans
+
+
+class Solution3:
+    """
+    站在答案的角度思考
+    枚举第一个数选谁……
+    枚举第二个数选谁……
+    每个节点都是答案
+
+    注意：[1,2]和[2,1]是重复的子集
+    为了避免重复，下一个数应大于当前选择的数
+    """
+
+    def subsets(self, nums):
+        ans = []
+        path = []
+        n = len(nums)
+
+        def dfs(i):
+            # 递归到的每个节点都是答案
+            ans.append(path.copy())
+            # if i == n:
+            #     return
+
+            # 枚举当前要填的数字
+            for j in range(i, n):
+                path.append(nums[j])
+                dfs(j + 1)
+                path.pop()  # 恢复现场
+
+        dfs(0)
+        return ans
