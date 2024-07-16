@@ -32,10 +32,10 @@ class Solution:
                 pre = cur
                 cur = temp
 
-            nxt = p0.next
-            p0.next.next = cur
-            p0.next = pre
-            p0 = nxt
+            nxt = p0.next  # 保存 p0 节点的下一个节点，即当前反转组的最后一个节点的下一个节点
+            p0.next.next = cur  # 将当前反转组的最后一个节点的 next 指向 cur，即下一组的第一个节点
+            p0.next = pre  # 将 p0 节点的 next 指向 pre，即当前反转组的第一个节点，完成当前组的反转。
+            p0 = nxt  # 更新 p0 为下一个要反转的组的起始节点。
         return dummy.next
 
 
