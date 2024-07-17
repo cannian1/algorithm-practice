@@ -1,6 +1,5 @@
 # 17.电话号码的字母组合
 # https://leetcode.cn/problems/letter-combinations-of-a-phone-number/
-# 子集类回溯
 from typing import List
 
 
@@ -42,18 +41,19 @@ MAPPING = ["", "", "abc", "def", "ghi", "jkl", "mno", "pqrs", "tuv", "wxyz"]
 
 
 class Solution2:
+    # 子集类回溯
     def letterCombinations(self, digits: str) -> List[str]:
         n = len(digits)
         if n == 0:
             return []
 
         # O(n*4^n)
-        ans = []
+        result = []
         path = [''] * n
 
-        def dfs(i):
+        def dfs(i: int) -> None:
             if i == n:
-                ans.append(''.join(path))
+                result.append(''.join(path))
                 return
             for c in MAPPING[int(digits[i])]:
                 path[i] = c
@@ -61,4 +61,10 @@ class Solution2:
             # 这题 path 长度固定，直接更新覆盖即可，不需要恢复现场
 
         dfs(0)
-        return ans
+        return result
+
+
+nums = "35"
+s = Solution2()
+r = s.letterCombinations(nums)
+print(r)

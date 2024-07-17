@@ -29,13 +29,13 @@ class Solution2:
 
     # https://www.bilibili.com/video/BV1mG4y1A7Gu
     def subsets(self, nums):
-        ans = []
+        result = []
         path = []
         n = len(nums)
 
-        def dfs(i):
+        def dfs(i: int) -> None:
             if i == n:
-                ans.append(path.copy())
+                result.append(path.copy())
                 return
 
             dfs(i + 1)
@@ -45,7 +45,7 @@ class Solution2:
             path.pop()  # 恢复现场
 
         dfs(0)
-        return ans
+        return result
 
 
 class Solution3:
@@ -60,13 +60,13 @@ class Solution3:
     """
 
     def subsets(self, nums):
-        ans = []
+        result = []
         path = []
         n = len(nums)
 
-        def dfs(i):
+        def dfs(i: int) -> None:
             # 递归到的每个节点都是答案
-            ans.append(path.copy())
+            result.append(path.copy())
             # if i == n:
             #     return
 
@@ -77,4 +77,10 @@ class Solution3:
                 path.pop()  # 恢复现场
 
         dfs(0)
-        return ans
+        return result
+
+
+nums = [1, 2, 3]
+s = Solution3()
+r = s.subsets(nums)
+print(r)

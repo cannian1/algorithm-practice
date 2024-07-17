@@ -44,3 +44,27 @@ class BetterSolution:
             self.backtracking(candidates, target, total, i, path, result)
             total -= candidates[i]
             path.pop()
+
+
+# 补充：77.组合
+class SolutionCombine:
+    def combine(self, n: int, k: int) -> List[List[int]]:
+        result = []
+        path = []  # [0]*k
+
+        def dfs(i: int) -> None:
+            # 剪枝
+            d = k - len(path)
+            if i < d:
+                return
+
+            if len(path) == k:
+                result.append(path.copy())
+                return
+
+            for j in range(i, 0, -1):
+                path.append(j)
+                dfs(j - 1)
+                path.pop()
+        dfs(n)
+        return result
