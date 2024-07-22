@@ -10,13 +10,13 @@ class Solution:
     """
 
     def partition(self, s: str) -> List[List[str]]:
-        ans = []
+        result = []
         path = []
         n = len(s)
 
         def dfs(i: int) -> None:
             if i == n:
-                ans.append(path.copy())
+                result.append(path.copy())
                 return
 
             for j in range(i, n):  # 枚举子串的结束位置
@@ -27,4 +27,9 @@ class Solution:
                     path.pop()  # 恢复现场
 
         dfs(0)
-        return ans
+        return result
+
+
+s = Solution()
+r = s.partition("aab")
+print(r)
