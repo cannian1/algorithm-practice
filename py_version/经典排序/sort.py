@@ -88,7 +88,37 @@ def quicksort(nums: list[int]) -> list[int]:
     return quicksort(left) + [pivot] + quicksort(right)
 
 
+def merge_sort(nums: list[int]) -> list[int]:
+    if len(nums) < 2:
+        return nums
+
+    def merge(left: list[int], right: list[int]) -> list[int]:
+        result = []
+        i = j = 0
+        while i < len(left) and j < len(right):
+            if left[i] < right[j]:
+                result.append(left[i])
+                i += 1
+            else:
+                result.append(right[j])
+                j += 1
+
+        result.extend(left[i:])
+        result.extend(right[j:])
+
+        return result
+
+    mid = len(nums) // 2
+    left = merge_sort(nums[:mid])
+    right = merge_sort(nums[mid:])
+    return merge(left, right)
+
+
 s = QuickSort()
 arr = [4, 7, 9, 12, 7, 3, 1, 8]
 s.quick_sort(arr, 0, len(arr) - 1)
 print(arr)
+
+arr2 = [4, 7, 9, 12, 7, 3, 1, 8]
+r2 = merge_sort(arr2)
+print(r2)
