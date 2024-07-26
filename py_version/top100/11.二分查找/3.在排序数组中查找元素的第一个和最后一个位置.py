@@ -27,5 +27,5 @@ class Solution:
 
 arr = [1, 2, 3, 4, 5, 5, 5, 7, 8, 9]
 s = Solution()
-idx = s.binary_search(arr, 6)
+idx = s.searchRange(arr, 5)
 print(idx)
