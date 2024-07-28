@@ -3,23 +3,6 @@
 
 package binary_search
 
-//func _findMin(nums []int) int {
-//	left, right := 0, len(nums)-1
-//	for left <= right {
-//		// 中间的数和最右边的数比较，如果中间数 < 最右边的数，那么最小值在当前左半区间，
-//		//  如果中间数 > 最右边的数，那么最小值在当前右半区间
-//
-//		mid := left + ((right - left) >> 1)
-//
-//		if nums[mid] < nums[len(nums)-1] {
-//			right = mid - 1
-//		} else {
-//			left = mid + 1
-//		}
-//	}
-//	return nums[left]
-//}
-
 func findMin(nums []int) int {
 	left, right := 0, len(nums)-1
 
