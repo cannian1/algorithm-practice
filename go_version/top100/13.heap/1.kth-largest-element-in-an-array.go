@@ -3,6 +3,8 @@
 
 package heap
 
+import "container/heap"
+
 // 1.堆排序做法
 func findKthLargest(nums []int, k int) int {
 	hp := MakeHeap(nums)
@@ -47,6 +49,37 @@ func (h *Heap) Pop() (res int) {
 	h.inner[0] = h.inner[ln-1]
 	h.inner = h.inner[:ln-1]
 	down(h.inner, 0, ln-1)
+	return
+}
+
+// 调库的堆排序
+func findKthLargest1(nums []int, k int) int {
+	h := IntHeap(nums[:k])
+	heap.Init(&h)
+
+	for i := k; i < len(nums); i++ {
+		heap.Push(&h, nums[i])
+		heap.Pop(&h)
+	}
+	return h[0]
+}
+
+type IntHeap []int
+
+func (h IntHeap) Len() int {
+	return len(h)
+}
+func (h IntHeap) Less(i, j int) bool {
+	return h[i] < h[j]
+}
+func (h IntHeap) Swap(i, j int) {
+	h[i], h[j] = h[j], h[i]
+}
+func (h *IntHeap) Push(x any) {
+	*h = append(*h, x.(int))
+}
+func (h *IntHeap) Pop() (v any) {
+	*h, v = (*h)[:h.Len()-1], (*h)[h.Len()-1]
 	return
 }
 
