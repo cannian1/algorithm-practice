@@ -4,21 +4,16 @@
 package sliding_window
 
 func lengthOfLongestSubstring(s string) int {
-	if len(s) == 0 {
-		return 0
-	}
-
-	window := [128]bool{}
-	left := 0
-	result := 0
+	result, left := 0, 0
+	window := make(map[rune]bool) // 使用 map 来维护从下标 left 到下标 right 的字符
 
 	for right, c := range s {
-		for window[c] {
-			window[s[left]] = false
-			left++
+		for window[c] { // 如果加入 c 会导致窗口内有重复元素，就把滑动窗口最左侧的元素去除
+			delete(window, rune(s[left])) // 从窗口中移除字符
+			left++                        // 缩小窗口
 		}
-		window[c] = true
-		result = max(result, right-left+1)
+		window[c] = true                   // 加入 c 到窗口
+		result = max(result, right-left+1) // 更新窗口最大值
 	}
 	return result
 }
