@@ -10,8 +10,9 @@ func levelOrder(root *TreeNode) [][]int {
 
 	res := make([][]int, 0)
 	queue := []*TreeNode{root}
+
 	for len(queue) > 0 {
-		level := make([]int, 0)
+		level := make([]int, 0, len(queue))
 		for range queue {
 			node := queue[0]
 			queue = queue[1:]

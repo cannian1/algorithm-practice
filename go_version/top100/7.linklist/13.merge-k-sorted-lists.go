@@ -1,7 +1,11 @@
+// 23.合并 k 个有序链表
+// https://leetcode.cn/problems/merge-k-sorted-lists
+
 package linklist
 
 import "container/heap"
 
+// 最小堆
 type hp []*ListNode
 
 func (h hp) Len() int {
