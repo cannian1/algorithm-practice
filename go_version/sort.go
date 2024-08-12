@@ -2,7 +2,7 @@ package main
 
 import "slices"
 
-func selectSort(nums []int) {
+func SelectSort(nums []int) {
 	n := len(nums)
 	for i := range n - 1 {
 		minIdx := i
@@ -15,7 +15,7 @@ func selectSort(nums []int) {
 	}
 }
 
-func bubbleSort(nums []int) {
+func BubbleSort(nums []int) {
 	n := len(nums)
 	var flag bool
 	for i := n - 1; i > 0; i-- {
@@ -32,43 +32,46 @@ func bubbleSort(nums []int) {
 	}
 }
 
-func quickSort(nums []int) []int {
+func QuickSort(nums []int) []int {
 	if len(nums) < 2 {
 		return nums
 	}
+
 	pivot := nums[0]
 	var left, right []int
-	for _, val := range nums {
+
+	for _, val := range nums[1:] {
 		if val <= pivot {
 			left = append(left, val)
 		} else {
 			right = append(right, val)
 		}
 	}
-	return slices.Concat(quickSort(left), []int{pivot}, quickSort(right))
+	return slices.Concat(QuickSort(left), []int{pivot}, QuickSort(right))
 }
 
-func insertionSort(nums []int) {
+// 插入排序
+func InsertionSort(nums []int) {
 	for i := 1; i < len(nums); i++ {
-		j := i - 1
 		base := nums[i]
-		for j > 0 && nums[j] > base {
+		j := i - 1
+		for j >= 0 && nums[j] > base {
 			nums[j+1] = nums[j]
 			j--
 		}
-		nums[j+1] = nums[j]
+		nums[j+1] = base
 	}
 }
 
 // 归并排序
-func mergeSort(arr []int) []int {
+func MergeSort(arr []int) []int {
 	if len(arr) < 2 {
 		return arr
 	}
 
 	mid := len(arr) >> 1
-	left := mergeSort(arr[:mid])
-	right := mergeSort(arr[mid:])
+	left := MergeSort(arr[:mid])
+	right := MergeSort(arr[mid:])
 
 	return merge(left, right)
 }
@@ -96,15 +99,15 @@ func merge(left, right []int) []int {
 }
 
 // 归并排序链表版
-func sortList(head *ListNode) *ListNode {
+func SortList(head *ListNode) *ListNode {
 	if head == nil || head.Next == nil {
 		return head
 	}
 
 	mid := getMid(head)
-	rightSorted := sortList(mid.Next)
+	rightSorted := SortList(mid.Next)
 	mid.Next = nil
-	leftSorted := sortList(head)
+	leftSorted := SortList(head)
 	return mergeTwoList(leftSorted, rightSorted)
 }
 
