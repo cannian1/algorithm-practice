@@ -1,4 +1,4 @@
-// 48. 旋转图像
+// 48. 旋转图像(顺时针旋转 90°)
 // https://leetcode.cn/problems/rotate-image/
 
 package matrix
