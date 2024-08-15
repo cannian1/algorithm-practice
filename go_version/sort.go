@@ -79,9 +79,6 @@ func QuickSort_(nums []int) []int {
 	mid := len(nums) / 2
 	pivot := medianOfThree(nums[0], nums[mid], nums[len(nums)-1])
 
-	// 将基准值移到数组的开头
-	nums[0], nums[mid] = nums[mid], nums[0]
-
 	var left, right, equal []int
 	for _, val := range nums {
 		if val < pivot {

@@ -36,7 +36,7 @@ func TestQuickSort_(t *testing.T) {
 func TestInsertionSort(t *testing.T) {
 	arr := []int{5, 7, 3, 1, 2}
 	expectArr := []int{1, 2, 3, 5, 7}
-	BubbleSort(arr)
+	InsertionSort(arr)
 	assert.Equal(t, expectArr, arr)
 }
 
