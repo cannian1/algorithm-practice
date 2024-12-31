@@ -1,8 +1,9 @@
-package main
+package sort
 
 import (
-	"github.com/stretchr/testify/assert"
 	"testing"
+
+	"github.com/stretchr/testify/assert"
 )
 
 func TestSelectSort(t *testing.T) {
