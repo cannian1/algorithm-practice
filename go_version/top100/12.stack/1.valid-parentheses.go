@@ -3,27 +3,35 @@
 
 package stack
 
+// isValid 检查输入字符串的括号是否有效
 func isValid(s string) bool {
-	if len(s)%2 != 0 {
-		return false
+	// 创建一个栈用于保存左括号
+	var stack []rune
+
+	// 定义一个映射，用于匹配右括号与对应的左括号
+	bracketMap := map[rune]rune{
+		')': '(',
+		'}': '{',
+		']': '[',
 	}
 
-	mp := map[rune]rune{
-		'(': ')',
-		'[': ']',
-		'{': '}',
-	}
-
-	st := make([]rune, 0)
+	// 遍历字符串中的每个字符
 	for _, c := range s {
-		if v := mp[c]; v > 0 { // c 是左括号
-			st = append(st, v) // 右括号入栈
-		} else {
-			if len(st) == 0 || st[len(st)-1] != c {
-				return false // 没有左括号或左括号类型不匹配
+		// 如果是右括号
+		if leftBracket, exists := bracketMap[c]; exists {
+			// 检查栈是否非空且栈顶是否匹配对应的左括号
+			if len(stack) > 0 && stack[len(stack)-1] == leftBracket {
+				// 从栈中弹出栈顶元素
+				stack = stack[:len(stack)-1]
+			} else {
+				// 如果不匹配，则字符串无效
+				return false
 			}
-			st = st[:len(st)-1] // 出栈
+		} else {
+			// 如果是左括号，将其压入栈中
+			stack = append(stack, c)
 		}
 	}
-	return len(st) == 0
+	// 如果栈为空，说明所有括号都匹配；否则字符串无效
+	return len(stack) == 0
 }

@@ -15,6 +15,7 @@ func Test_majorityElement(t *testing.T) {
 	}{
 		{"case1", []int{3, 2, 3}, 3},
 		{"case2", []int{2, 2, 1, 1, 1, 2, 2}, 2},
+		{"case3", []int{3, 3, 4}, 3},
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {

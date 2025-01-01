@@ -1,6 +1,15 @@
+// 115.最小栈
+// https://leetcode.cn/problems/min-stack/
+
 package stack
 
 import "math"
+
+/*
+	当一个元素要入栈时，我们取当前辅助栈的栈顶存储的最小值，与当前元素比较得出最小值，将这个最小值插入辅助栈中；
+	当一个元素要出栈时，我们把辅助栈的栈顶元素也一并弹出；
+	在任意一个时刻，栈内元素的最小值就存储在辅助栈的栈顶元素中。
+*/
 
 type MinStack struct {
 	stack    []int
