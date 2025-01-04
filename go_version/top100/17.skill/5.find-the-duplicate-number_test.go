@@ -19,7 +19,7 @@ func Test_findDuplicate(t *testing.T) {
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			assert.Equalf(t, tt.want, findDuplicate(tt.args), "findDuplicate(%v)", tt.args)
+			assert.Equal(t, tt.want, findDuplicate(tt.args))
 		})
 	}
 }

@@ -13,7 +13,7 @@ package skill
 func nextPermutation(nums []int) {
 	// 从右向左找到第一个较小的数 (递减点)
 	n := len(nums)
-	if len(nums) <= 1 {
+	if n <= 1 {
 		return
 	}
 
