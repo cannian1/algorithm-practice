@@ -3,6 +3,8 @@
 
 package sliding_window
 
+// 给定一个字符串 s ,请你找出其中不含有重复字符的最长子串的长度
+
 func lengthOfLongestSubstring(s string) int {
 	result, left := 0, 0
 	window := make(map[rune]bool) // 使用 map 来维护从下标 left 到下标 right 的字符
