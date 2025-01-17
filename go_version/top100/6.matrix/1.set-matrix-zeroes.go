@@ -9,6 +9,7 @@ func setZeroes(matrix [][]int) {
 
 	for i, r := range matrix {
 		for j := range r {
+			// matrix[i][j] 和 r[j] 是一个东西
 			if matrix[i][j] == 0 {
 				row[i] = true
 				col[j] = true

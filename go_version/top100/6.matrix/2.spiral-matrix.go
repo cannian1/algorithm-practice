@@ -8,28 +8,41 @@ func spiralOrder(matrix [][]int) []int {
 		return []int{}
 	}
 	rows, cols := len(matrix), len(matrix[0])
-	left, right, top, bottom := 0, cols-1, 0, rows-1
 	result := make([]int, 0, rows*cols)
 
-	for left <= right && top <= bottom {
-		for i := left; i <= right; i++ {
-			result = append(result, matrix[top][i])
+	// 定义四个边界
+	top, bottom, left, right := 0, rows-1, 0, cols-1
+
+	for top <= bottom && left <= right {
+		// 从左到右遍历顶部行
+		for col := left; col <= right; col++ {
+			result = append(result, matrix[top][col])
 		}
-		for i := top + 1; i <= bottom; i++ {
-			result = append(result, matrix[i][right])
-		}
-		if left < right && top < bottom {
-			for i := right - 1; i >= left; i-- {
-				result = append(result, matrix[bottom][i])
-			}
-			for i := bottom - 1; i > top; i-- {
-				result = append(result, matrix[i][left])
-			}
-		}
-		left++
-		right--
 		top++
-		bottom--
+
+		// 从上到下遍历右侧列
+		for row := top; row <= bottom; row++ {
+			result = append(result, matrix[row][right])
+		}
+		right--
+
+		// 确保还有行和列需要遍历
+		if top <= bottom {
+			// 从右到左遍历底部行
+			for col := right; col >= left; col-- {
+				result = append(result, matrix[bottom][col])
+			}
+			bottom--
+		}
+
+		if left <= right {
+			// 从下到上遍历左侧列
+			for row := bottom; row >= top; row-- {
+				result = append(result, matrix[row][left])
+			}
+			left++
+		}
 	}
+
 	return result
 }

@@ -16,3 +16,36 @@ func maxSubArray(nums []int) int {
 	}
 	return maxSum
 }
+
+// 变形：返回最大子数组
+func maxSubArray1(nums []int) []int {
+	if len(nums) == 0 {
+		return []int{}
+	}
+
+	maxSum := nums[0]
+	currentSum := nums[0]
+	start := 0
+	end := 0
+	tempStart := 0
+
+	for i := 1; i < len(nums); i++ {
+		// 如果当前元素比加上前面的和更大，重置当前子数组的起点
+		if nums[i] > currentSum+nums[i] {
+			currentSum = nums[i]
+			tempStart = i
+		} else {
+			currentSum += nums[i]
+		}
+
+		// 更新全局最大和及对应的子数组边界
+		if currentSum > maxSum {
+			maxSum = currentSum
+			start = tempStart
+			end = i
+		}
+	}
+
+	// 返回最大子数组
+	return nums[start : end+1]
+}
