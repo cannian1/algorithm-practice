@@ -15,30 +15,30 @@ func spiralOrder(matrix [][]int) []int {
 
 	for top <= bottom && left <= right {
 		// 从左到右遍历顶部行
-		for col := left; col <= right; col++ {
-			result = append(result, matrix[top][col])
+		for i := left; i <= right; i++ {
+			result = append(result, matrix[top][i])
 		}
 		top++
 
 		// 从上到下遍历右侧列
-		for row := top; row <= bottom; row++ {
-			result = append(result, matrix[row][right])
+		for i := top; i <= bottom; i++ {
+			result = append(result, matrix[i][right])
 		}
 		right--
 
 		// 确保还有行和列需要遍历
 		if top <= bottom {
 			// 从右到左遍历底部行
-			for col := right; col >= left; col-- {
-				result = append(result, matrix[bottom][col])
+			for i := right; i >= left; i-- {
+				result = append(result, matrix[bottom][i])
 			}
 			bottom--
 		}
 
 		if left <= right {
 			// 从下到上遍历左侧列
-			for row := bottom; row >= top; row-- {
-				result = append(result, matrix[row][left])
+			for i := bottom; i >= top; i-- {
+				result = append(result, matrix[i][left])
 			}
 			left++
 		}
