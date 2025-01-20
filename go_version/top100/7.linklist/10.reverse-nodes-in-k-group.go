@@ -4,32 +4,39 @@
 package linklist
 
 func reverseKGroup(head *ListNode, k int) *ListNode {
-	n := 0
-	cur := head
-
-	for cur != nil {
-		n += 1
-		cur = cur.Next
+	if head == nil || k == 1 {
+		return head
 	}
 
+	// 创建一个虚拟头节点，简化边界处理
 	dummy := &ListNode{Next: head}
-	p0 := dummy
-	var pre *ListNode = nil
-	cur = head
+	prevGroupEnd := dummy
+	cur := head
 
-	for n >= k {
-		n -= k
-		for _ = range k {
+	// 计算链表的长度
+	length := 0
+	for node := head; node != nil; node = node.Next {
+		length++
+	}
+
+	for length >= k {
+		groupStart := cur
+		var prev *ListNode
+		for i := 0; i < k; i++ {
 			temp := cur.Next
-			cur.Next = pre
-			pre = cur
+			cur.Next = prev
+			prev = cur
 			cur = temp
 		}
 
-		nxt := p0.Next
-		p0.Next.Next = cur
-		p0.Next = pre
-		p0 = nxt
+		// 将翻转后的部分连接到前后部分
+		prevGroupEnd.Next = prev
+		groupStart.Next = cur
+		prevGroupEnd = groupStart
+
+		// 减去已处理的 k 个节点
+		length -= k
 	}
+
 	return dummy.Next
 }

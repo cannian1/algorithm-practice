@@ -19,3 +19,10 @@ func lengthOfLongestSubstring(s string) int {
 	}
 	return result
 }
+
+/*  如果想要返回具体的子串，把 result 那行改成这个
+if right-left+1 > result {
+	result = right - left + 1
+	start = left // 更新最长子串的起始位置
+}
+*/
