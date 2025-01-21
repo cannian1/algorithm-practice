@@ -4,17 +4,36 @@
 package linklist
 
 func swapPairs(head *ListNode) *ListNode {
-	cur := &ListNode{Next: head}
-	dummy := cur
+	dummy := &ListNode{Next: head}
+	pre := dummy
 
-	for cur.Next != nil && cur.Next.Next != nil {
-		temp := cur.Next
-		temp1 := cur.Next.Next.Next
+	// 遍历链表
+	for head != nil && head.Next != nil {
+		// 定义要交换的两个节点
+		first := head
+		second := head.Next
 
-		cur.Next = cur.Next.Next
-		cur.Next.Next = temp
-		temp.Next = temp1
-		cur = cur.Next.Next
+		// 交换这两个节点
+		pre.Next = second
+		first.Next = second.Next
+		second.Next = first
+
+		// 更新 prev 和 head 指针
+		pre = first
+		head = first.Next
 	}
+
+	// 返回交换后的链表头节点
 	return dummy.Next
+}
+
+// 递归
+func swapPairs1(head *ListNode) *ListNode {
+	if head == nil || head.Next == nil {
+		return head
+	}
+	newHead := head.Next
+	head.Next = swapPairs(newHead.Next)
+	newHead.Next = head
+	return newHead
 }

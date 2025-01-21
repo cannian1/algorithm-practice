@@ -27,11 +27,15 @@ func (h *hp) Push(v any) {
 func (h *hp) Pop() any {
 	old := *h
 	x := old[len(old)-1]
-	*h = old[0 : len(old)-1]
+	*h = old[:len(old)-1]
 	return x
 }
 
 func mergeKLists(lists []*ListNode) *ListNode {
+	if len(lists) == 0 {
+		return nil
+	}
+
 	h := hp{}
 	for _, node := range lists {
 		if node != nil {
