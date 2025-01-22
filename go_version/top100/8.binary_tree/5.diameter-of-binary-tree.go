@@ -3,9 +3,12 @@
 
 package binary_tree
 
+// 二叉树的 直径 是指树中任意两个节点之间最长路径的 长度 。这条路径可能经过也可能不经过根节点 root
+
 func diameterOfBinaryTree(root *TreeNode) int {
 	result := 0
 
+	// 枚举每个 node，假设直径在这里「拐弯」，也就是计算由左右两条从下面的叶子节点到 node 的链的节点值之和，去更新答案的最大值
 	var dfs func(node *TreeNode) int
 	dfs = func(node *TreeNode) int {
 		if node == nil {

@@ -3,18 +3,16 @@
 
 package binary_tree
 
+// O(n) O(n)
 func sortedArrayToBST(nums []int) *TreeNode {
-	return build(nums, 0, len(nums)-1)
-}
-
-func build(nums []int, left, right int) *TreeNode {
-	if left > right {
+	if len(nums) == 0 {
 		return nil
 	}
 
-	mid := left + ((right - left) >> 1)
-	root := &TreeNode{Val: nums[mid]}
-	root.Left = build(nums, left, mid-1)
-	root.Right = build(nums, mid+1, right)
-	return root
+	mid := len(nums) / 2
+	return &TreeNode{
+		Val:   nums[mid],
+		Left:  sortedArrayToBST(nums[:mid]),
+		Right: sortedArrayToBST(nums[mid+1:]),
+	}
 }

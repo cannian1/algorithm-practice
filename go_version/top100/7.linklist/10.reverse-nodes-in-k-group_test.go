@@ -17,7 +17,7 @@ func Test_reverseKGroup(t *testing.T) {
 		expected []int
 	}{
 		{"case1", args{[]int{1, 2, 3, 4, 5}, 2}, []int{2, 1, 4, 3, 5}},
-		{"case1", args{[]int{1, 2, 3, 4, 5}, 3}, []int{3, 2, 1, 4, 5}},
+		{"case2", args{[]int{1, 2, 3, 4, 5}, 3}, []int{3, 2, 1, 4, 5}},
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
