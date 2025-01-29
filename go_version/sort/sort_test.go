@@ -34,6 +34,13 @@ func TestQuickSort_(t *testing.T) {
 	assert.Equal(t, expectArr, res)
 }
 
+func TestQuickSort2(t *testing.T) {
+	arr := []int{5, 7, 3, 3, 1, 2}
+	expectArr := []int{1, 2, 3, 3, 5, 7}
+	quickSort(arr, 0, len(arr)-1)
+	assert.Equal(t, expectArr, arr)
+}
+
 func TestInsertionSort(t *testing.T) {
 	arr := []int{5, 7, 3, 1, 2}
 	expectArr := []int{1, 2, 3, 5, 7}
