@@ -15,3 +15,9 @@ func searchInsert(nums []int, target int) int {
 	}
 	return left
 }
+
+func searchInsert2(nums []int, target int) int {
+	return commonSearch(len(nums), func(i int) bool {
+		return nums[i] >= target
+	})
+}

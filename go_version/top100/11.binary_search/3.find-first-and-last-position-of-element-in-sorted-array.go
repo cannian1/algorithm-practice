@@ -24,3 +24,17 @@ func lowerBound(nums []int, target int) int {
 	}
 	return left
 }
+
+func searchRange2(nums []int, target int) []int {
+	start := commonSearch(len(nums), func(i int) bool {
+		return nums[i] >= target
+	})
+
+	if start == len(nums) || nums[start] != target {
+		return []int{-1, -1}
+	}
+	end := commonSearch(len(nums), func(i int) bool {
+		return nums[i] >= target+1
+	}) - 1
+	return []int{start, end}
+}
