@@ -24,6 +24,10 @@ func Constructor(capacity int) LRUCache {
 	}
 }
 
+// 查询：当查询数据时，如果数据在缓存中，则将其移动到链表的头部。
+// 插入：当插入新数据时，如果缓存未满，则直接将新数据插入链表头部，并在哈希表中记录；如果缓存已满，则淘汰链表尾部的数据，再插入新数据。
+// 淘汰：当需要淘汰数据时，直接删除链表尾部的节点，并在哈希表中移除对应记录
+
 func (this *LRUCache) Get(key int) int {
 	if element, exists := this.cache[key]; exists {
 		this.list.MoveToFront(element) // 标记为最近被使用
@@ -31,6 +35,15 @@ func (this *LRUCache) Get(key int) int {
 	}
 	return -1
 }
+
+/*
+ 1. 如果缓存的 key 存在，则将数据更新并移到链表头部
+ 2. 如果数据不存在
+    2.1 如果长度大于等于 LRU 缓存的容量，移除最近最少使用的项（链表最后一个元素），并从缓存中删除
+
+链表头部插入新的键值对
+缓存存入新的链表节点
+*/
 
 func (this *LRUCache) Put(key int, value int) {
 	if element, exists := this.cache[key]; exists {

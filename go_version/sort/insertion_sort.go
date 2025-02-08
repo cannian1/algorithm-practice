@@ -1,6 +1,6 @@
 package sort
 
-// InsertionSort 插入排序
+// InsertionSort 插入排序 O(n²)
 func InsertionSort(nums []int) {
 	for i := 1; i < len(nums); i++ {
 		base := nums[i]

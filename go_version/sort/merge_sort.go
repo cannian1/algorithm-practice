@@ -1,6 +1,6 @@
 package sort
 
-// 归并排序
+// 归并排序 O(nlogn)
 func MergeSort(arr []int) []int {
 	if len(arr) < 2 {
 		return arr
